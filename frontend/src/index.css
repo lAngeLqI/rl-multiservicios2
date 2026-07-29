@@ -1,0 +1,85 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables de color */
+:root {
+  --primary-900: #1a3c2a;
+  --primary-800: #1e4d34;
+  --primary-700: #2a5f3e;
+  --primary-600: #347148;
+  --primary-500: #3d8b55;
+  --primary-400: #4fa36a;
+  --primary-300: #6bbf84;
+  --primary-200: #92d4a6;
+  --primary-100: #bae8c9;
+  --primary-50: #e2f4e8;
+}
+
+/* Estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #f0f7f2;
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e2f4e8;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4fa36a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3d8b55;
+}
+
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+/* Notificaciones en login (fuera del DashboardLayout) */
+.notification-toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  min-width: 300px;
+  max-width: 500px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  color: white;
+  font-weight: 500;
+  animation: slideDown 0.3s ease-out forwards;
+}
