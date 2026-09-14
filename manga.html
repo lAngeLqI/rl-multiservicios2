@@ -224,7 +224,46 @@
     </div>
 </div>
 
+<script>
+    const audio = document.getElementById("musicaFondo");
+    const btnMusica = document.getElementById("btnMusica");
+    const sliderVolumen = document.getElementById("volumenMusica");
+    const spanTexto = btnMusica.querySelector("span");
+    const icono = btnMusica.querySelector("i");
+    
+    let sonando = false;
 
+    // Configurar el volumen inicial según la barra (está en 0.3, es decir 30%)
+    audio.volume = sliderVolumen.value;
+
+    // Detectar cuando mueves la barra de volumen
+    sliderVolumen.addEventListener("input", (evento) => {
+        audio.volume = evento.target.value;
+    });
+
+    // Intentar reproducir automáticamente
+    audio.play().then(() => {
+        sonando = true;
+        icono.className = "fas fa-pause";
+        spanTexto.innerText = "Pausar";
+    }).catch((error) => {
+        console.log("Esperando interacción del usuario para reproducir.");
+    });
+
+    // Botón Play/Pause
+    btnMusica.addEventListener("click", () => {
+        if (sonando) {
+            audio.pause();
+            icono.className = "fas fa-play";
+            spanTexto.innerText = "Reproducir";
+        } else {
+            audio.play();
+            icono.className = "fas fa-pause";
+            spanTexto.innerText = "Pausar";
+        }
+        sonando = !sonando;
+    });
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
