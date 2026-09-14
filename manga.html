@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga - AnimeNews</title>
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- BOOTSTRAP 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tu CSS unificado compilado desde SASS -->
+    <link rel="stylesheet" href="css/main.css"> <!-- O scss/main.css dependiendo de tu ruta -->
+</head>
+<body class="manga-theme">
+
+<!-- HEADER -->
+<header class="app-header">
+    <div class="container header-flex">
+           <div class="logo">
+            <h1>Anime<span>News</span></h1>
+            <p>Lo último del anime y la cultura japonesa</p>
+        </div>
+   
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="noticias.html">Noticias</a></li>
+                <li><a href="estrenos.html">Estrenos</a></li>
+                <li><a href="anime.html" class="active">Anime</a></li>
+                <li><a href="manga.html">Manga</a></li>
+            </ul>
+        </nav>
+        <div class="search-box">
+            <input type="text" placeholder="Buscar...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+</header>
+
+<!-- CONTENIDO PRINCIPAL MANGA -->
+<main class="container my-5 animate-fade-up">
+    <div class="row g-4">
+        
+        <!-- SIDEBAR IZQUIERDO (Manga Explorer) -->
+        <aside class="col-lg-3">
+            <div class="manga-sidebar">
+                <div class="sidebar-header">
+                    <h2>Manga Explorer</h2>
+                    <p>Directorio de Manga</p>
+                </div>
+                
+                <ul class="manga-nav">
+                    <li><a href="#"><i class="far fa-star"></i> Top Rated</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> Trending</a></li>
+                    
+                    <!-- Elemento Activo con Submenú -->
+                    <li class="active-item">
+                        <a href="#" class="active-link"><i class="fas fa-th-large"></i> Categories</a>
+                        <ul class="manga-subnav">
+                            <li><a href="#">Shonen</a></li>
+                            <li><a href="#">Seinen</a></li>
+                            <li><a href="#">Shojo</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li><a href="#"><i class="far fa-check-circle"></i> New Releases</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Community</a></li>
+                </ul>
+
+                <button class="btn-explore-all mt-4">Explore All</button>
+            </div>
+        </aside>
+
+        <!-- CONTENIDO DERECHO -->
+        <div class="col-lg-9">
+            
+            <!-- HERO DESTACADO -->
+            <div class="manga-hero mb-5">
+                <div class="hero-bg" style="background-image: url('img/berserk1997.jpg');"></div>
+                <div class="hero-content">
+                    <span class="manga-badge mb-3">DESTACADO</span>
+                    <h1>Berserk: El Retorno del Espadachín Negro</h1>
+                    <p>La obra maestra de Kentaro Miura continúa dejando su marca. Sumérgete en el oscuro mundo de fantasía donde la supervivencia tiene un precio de sangre y la venganza es el único camino.</p>
+                    <div class="hero-buttons mt-4">
+                        <button class="btn-primary-solid"><i class="fas fa-play me-2"></i> Leer Ahora</button>
+                        <button class="btn-dark-solid">Más Información</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN TENDENCIAS -->
+            <div class="manga-section-title mb-4">
+                <h2>Tendencias Manga</h2>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="manga-card">
+                        <div class="card-img-wrapper">
+                            <img src="img/jujutsu.webp" alt="Jujutsu Kaisen">
+                            <span class="badge-hot">HOT</span>
+                        </div>
+                        <div class="card-body">
+                            <h3>Jujutsu Kaisen</h3>
+                            <p class="author">Gege Akutami</p>
+                            <div class="tags">
+                                <span>Shonen</span>
+                                <span>Acción</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="manga-card">
+                        <div class="card-img-wrapper">
+                            <img src="img/heroAcademy.webp" alt="My Hero Academia">
+                            <span class="badge-new">NUEVO</span>
+                        </div>
+                        <div class="card-body">
+                            <h3>My Hero Academia</h3>
+                            <p class="author">Kohei Horikoshi</p>
+                            <div class="tags">
+                                <span>Shonen</span>
+                                <span>Superhéroes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="manga-card">
+                        <div class="card-img-wrapper">
+                            <img src="img/chainsawMan.jpg" alt="Chainsaw Man">
+                        </div>
+                        <div class="card-body">
+                            <h3>Chainsaw Man</h3>
+                            <p class="author">Tatsuki Fujimoto</p>
+                            <div class="tags">
+                                <span>Shonen</span>
+                                <span>Gore</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="manga-card">
+                        <div class="card-img-wrapper">
+                            <img src="img/vinladSaga.webp" alt="Vinland Saga">
+                        </div>
+                        <div class="card-body">
+                            <h3>Vinland Saga</h3>
+                            <p class="author">Makoto Yukimura</p>
+                            <div class="tags">
+                                <span>Seinen</span>
+                                <span>Histórico</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Fin Row Cards -->
+
+        </div> <!-- Fin Contenido Derecho -->
+    </div> <!-- Fin Row Principal -->
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

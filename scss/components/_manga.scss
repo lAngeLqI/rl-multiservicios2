@@ -1,0 +1,225 @@
+// ==========================================
+// COMPONENTE: PÁGINA DE MANGA (Dashboard Style)
+// ==========================================
+
+$manga-bg: #121212;
+$manga-surface: #1e1e1e;
+$manga-primary: #ff4d6d;
+$manga-text: #f0f0f0;
+$manga-muted: #a0a0a0;
+
+// Tema general para la página
+.manga-theme {
+    background-color: $manga-bg;
+    color: $manga-text;
+    min-height: 100vh;
+}
+
+// 1. SIDEBAR (Manga Explorer)
+.manga-sidebar {
+    background-color: $manga-surface;
+    border-radius: 16px;
+    padding: 25px 20px;
+    border: 1px solid rgba(255,255,255,0.05);
+    position: sticky;
+    top: 100px; // Se queda fijo al hacer scroll
+
+    .sidebar-header {
+        margin-bottom: 30px;
+        h2 { font-family: 'Poppins', sans-serif; font-size: 1.3rem; font-weight: 800; color: $manga-primary; margin-bottom: 2px; }
+        p { font-size: 0.8rem; color: $manga-text; font-weight: 600; }
+    }
+
+    .manga-nav {
+        list-style: none;
+        padding: 0;
+        
+        li {
+            margin-bottom: 5px;
+            
+            a {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 12px 15px;
+                color: $manga-text;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 0.9rem;
+                border-radius: 8px;
+                transition: all 0.2s ease;
+
+                i { font-size: 1.1rem; width: 20px; text-align: center; }
+                &:hover { background-color: rgba(255, 255, 255, 0.05); color: $manga-primary; }
+            }
+        }
+
+        // Estilo especial para la pestaña activa
+        .active-item {
+            .active-link {
+                background-color: $manga-primary;
+                color: white;
+                box-shadow: 0 4px 12px rgba($manga-primary, 0.3);
+                &:hover { color: white; }
+            }
+        }
+
+        .manga-subnav {
+            list-style: none;
+            padding-left: 45px; // Indentación
+            margin-top: 10px;
+            margin-bottom: 15px;
+            
+            a {
+                padding: 8px 0;
+                font-size: 0.85rem;
+                color: $manga-muted;
+                &:hover { background: none; color: $manga-primary; }
+            }
+        }
+    }
+
+    .btn-explore-all {
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: background 0.2s;
+        &:hover { background-color: rgba(255, 255, 255, 0.15); }
+    }
+}
+
+// 2. HERO DESTACADO MANGA
+.manga-hero {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+
+    .hero-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.6s ease;
+    }
+
+    &:hover .hero-bg { transform: scale(1.03); }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        padding: 40px;
+        max-width: 600px;
+        background: linear-gradient(to right, rgba($manga-bg, 1) 0%, rgba($manga-bg, 0.8) 50%, transparent 100%);
+        height: 100%;
+
+        h1 { font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 15px; }
+        p { color: $manga-muted; font-size: 0.95rem; line-height: 1.6; }
+    }
+
+    .manga-badge {
+        display: inline-block;
+        background-color: $manga-primary;
+        color: white;
+        font-size: 0.7rem;
+        font-weight: 800;
+        padding: 4px 10px;
+        border-radius: 4px;
+        letter-spacing: 1px;
+    }
+}
+
+// Botones del Hero
+.btn-primary-solid {
+    background-color: $manga-primary;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 700;
+    transition: 0.2s;
+    &:hover { background-color: lighten($manga-primary, 5%); transform: translateY(-2px); }
+}
+.btn-dark-solid {
+    background-color: #2a2a2a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    margin-left: 10px;
+    transition: 0.2s;
+    &:hover { background-color: #3a3a3a; transform: translateY(-2px); }
+}
+
+// 3. TÍTULO SECCIÓN TENDENCIAS
+.manga-section-title {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 15px;
+    h2 { font-family: 'Poppins', sans-serif; font-size: 1.8rem; font-weight: 700; margin: 0; }
+}
+
+// 4. TARJETAS DE MANGA (Pósters)
+.manga-card {
+    background-color: $manga-surface;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+    @include transition-smooth; // Tu mixin de elevación
+
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        .card-img-wrapper img { transform: scale(1.05); }
+    }
+
+    .card-img-wrapper {
+        position: relative;
+        aspect-ratio: 3/4; // Proporción perfecta de póster
+        overflow: hidden;
+        
+        img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        
+        // Badges flotantes
+        .badge-hot, .badge-new {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+        .badge-hot { background-color: $manga-primary; }
+        .badge-new { background-color: #c40a39; }
+    }
+
+    .card-body {
+        padding: 15px;
+
+        h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .author { font-size: 0.8rem; color: $manga-primary; margin-bottom: 12px; }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+
+            span {
+                background-color: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
+                color: $manga-muted;
+                font-size: 0.65rem;
+                padding: 3px 8px;
+                border-radius: 4px;
+            }
+        }
+    }
+}

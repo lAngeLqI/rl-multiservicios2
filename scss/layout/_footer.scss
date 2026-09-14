@@ -1,0 +1,13 @@
+.app-footer {
+    background: $color-dark;
+    color: #a0b3c9;
+    padding: 35px 0;
+    margin-top: 40px;
+
+    a {
+        color: #ffa5b4;
+        text-decoration: none;
+        transition: color 0.2s;
+        &:hover { color: $color-white; }
+    }
+}
