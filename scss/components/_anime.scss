@@ -1,0 +1,460 @@
+// ==========================================
+// COMPONENTE: PÁGINA DE ANIME (Dark Theme)
+// ==========================================
+
+// Variables extraídas de tu código Tailwind
+$anime-bg: #131313;
+$anime-surface: #1c1b1b;
+$anime-surface-high: #2a2a2a;
+$anime-primary: hsl(351, 80%, 50%);
+$anime-text: #e5e2e1;
+$anime-text-muted: #965a56;
+
+// Forzar colores oscuros solo para esta página
+.anime-theme {
+    background-color: $anime-bg;
+    color: $anime-text;
+    font-family: 'Inter', sans-serif;
+}
+
+// 1. HERO SECTION (Unidad 3: Transformaciones y Posicionamiento)
+.anime-hero {
+    position: relative;
+    height: 75vh;
+    min-height: 500px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+
+    .hero-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.8s ease;
+    }
+
+    &:hover .hero-bg {
+        transform: scale(1.05); // Animación Sutil (Unidad 3)
+    }
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, $anime-bg 0%, rgba($anime-bg, 0.4) 50%, transparent 100%);
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 10;
+        padding-bottom: 40px;
+        max-width: 800px;
+        margin: 0 auto 0 0; // Alinear a la izquierda
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.1;
+            margin: 15px 0;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #dce5d9;
+            margin-bottom: 30px;
+        }
+    }
+}
+
+// Botones del Hero (Mixins y Variables - Unidad 2)
+.hero-badge {
+    background-color: $anime-primary;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+
+    button {
+        padding: 12px 25px;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-primary-glow {
+        background-color: $anime-primary;
+        color: white;
+        &:hover {
+            background-color: lighten($anime-primary, 10%);
+            box-shadow: 0 0 20px rgba($anime-primary, 0.5);
+            transform: translateY(-2px);
+        }
+    }
+
+    .btn-glass {
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    }
+}
+
+// 2. TÍTULOS DE SECCIÓN
+.section-header {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 10px;
+
+    h2 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        border-bottom: 4px solid $anime-primary;
+        margin-bottom: -12px; // Solapa el borde
+        padding-bottom: 5px;
+    }
+    .view-all {
+        color: $anime-primary;
+        text-decoration: none;
+        font-size: 0.9rem;
+        &:hover { text-decoration: underline; }
+    }
+}
+
+// 3. TARJETAS DE SHONEN
+.anime-card-large {
+    background-color: $anime-surface-high;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s;
+
+    &:hover {
+        transform: translateY(-5px);
+        .card-img-wrapper img { transform: scale(1.08); }
+    }
+
+    .card-img-wrapper {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 16/9;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .rating-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: $anime-primary;
+            color: rgb(248, 229, 229);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+    }
+
+    .card-info {
+        padding: 20px;
+        h3 { font-size: 1.2rem; font-weight: bold; margin-bottom: 10px; }
+        p { font-size: 0.9rem; color: $anime-text-muted; }
+    }
+}
+
+.anime-card-small {
+    display: flex;
+    gap: 15px;
+    background-color: $anime-surface;
+    padding: 15px;
+    border-radius: 12px;
+    transition: background 0.3s;
+    cursor: pointer;
+
+    &:hover { background-color: $anime-surface-high; }
+
+    img {
+        width: 80px;
+        height: 110px;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        h4 { font-size: 1rem; font-weight: bold; margin-bottom: 5px; }
+        p { font-size: 0.8rem; color: $anime-text-muted; margin-bottom: 8px; }
+        .rating { font-size: 0.75rem; color: $anime-primary; font-weight: bold; }
+    }
+}
+
+// 4. SIDEBAR WIDGETS
+.anime-widget {
+    background-color: $anime-surface-high;
+    border-radius: 16px;
+    padding: 25px;
+    border: 1px solid rgba(255,255,255,0.05);
+
+    h3 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: $anime-primary;
+        margin-bottom: 20px;
+    }
+}
+
+.trending-list-dark {
+    list-style: none;
+    padding: 0;
+
+    li {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+        
+        .rank {
+            font-size: 2rem;
+            font-weight: 800;
+            color: $anime-surface; // Efecto de marca de agua oscura
+            line-height: 1;
+        }
+
+        .details {
+            border-left: 1px solid rgba(255,255,255,0.1);
+            padding-left: 15px;
+            h4 { font-size: 1rem; font-weight: bold; margin-bottom: 5px; cursor: pointer; &:hover{ color: $anime-primary; }}
+            p { font-size: 0.8rem; color: $anime-text-muted; margin-bottom: 5px; }
+            .views { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+        }
+    }
+}
+
+.newsletter-widget {
+    background-color: $anime-primary;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    h3 { color: white; }
+    p { font-size: 0.85rem; opacity: 0.9; margin-bottom: 20px; }
+
+    .icon-bg {
+        font-size: 4rem;
+        margin-bottom: 15px;
+        opacity: 0.9;
+    }
+
+    input {
+        background: rgba(0,0,0,0.2);
+        border: none;
+        color: white;
+        &::placeholder { color: rgba(255,255,255,0.6); }
+        &:focus { background: rgba(0,0,0,0.3); color: white; }
+    }
+
+    .btn-subscribe {
+        width: 100%;
+        background-color: #680011; // Dark red del tailwind config
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: background 0.3s;
+        &:hover { background-color: #410007; }
+    }
+}
+
+
+// ==========================================
+// 5. TARJETAS VERTICALES (SECCIÓN SEINEN)
+// ==========================================
+.anime-card-portrait {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 3/4; // Fuerza la proporción vertical
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    cursor: pointer;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    &:hover img {
+        transform: scale(1.1); // Efecto zoom del tailwind original
+    }
+
+    .card-overlay {
+        position: absolute;
+        inset: 0; // Cubre toda la tarjeta
+        // Gradiente oscuro de abajo hacia arriba para que el texto sea legible
+        background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0) 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; // Empuja el texto hacia abajo
+        padding: 20px;
+
+        h3 {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .category-tag {
+            color: $anime-primary;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+// ==========================================
+// 6. DESTACADO HORIZONTAL (SLICE OF LIFE)
+// ==========================================
+.anime-featured-horizontal {
+    background-color: $anime-surface-high;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.05);
+    
+    .img-wrapper img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .content-wrapper {
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            font-size: 1.6rem;
+            line-height: 1.3;
+        }
+        p {
+            color: $anime-text-muted;
+            line-height: 1.6;
+        }
+    }
+}
+
+.btn-outline-primary-custom {
+    background: transparent;
+    border: 2px solid $anime-primary;
+    color: $anime-primary;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: $anime-primary;
+        color: white;
+        transform: translateY(-2px);
+    }
+}
+
+
+.music-toggle-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: $anime-primary; // Usa tu variable roja/rosada
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: scale(1.05);
+        background-color: lighten($anime-primary, 10%);
+    }
+}
+
+// ==========================================
+// WIDGET REPRODUCTOR DE MÚSICA
+// ==========================================
+.music-player-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: rgba(18, 18, 18, 0.85); // Fondo oscuro semitransparente
+    backdrop-filter: blur(8px); // Efecto vidrio
+    padding: 10px 20px;
+    border-radius: 40px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+
+    .music-toggle-btn {
+        background-color: $anime-primary;
+        color: white;
+        border: none;
+        padding: 8px 18px;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: lighten($anime-primary, 10%);
+            transform: scale(1.05);
+        }
+    }
+
+    .volume-control {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        .volume-slider {
+            width: 80px;
+            cursor: pointer;
+            accent-color: $anime-primary; // Pinta la barra del color de tu tema
+            height: 4px;
+            
+            // Ajustes para que la barra se vea más delgada y elegante
+            &::-webkit-slider-thumb {
+                width: 12px;
+                height: 12px;
+            }
+        }
+    }
+}

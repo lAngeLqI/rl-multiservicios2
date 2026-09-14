@@ -1,0 +1,78 @@
+.app-header {
+    background: linear-gradient(135deg, $color-dark 0%, $color-darker 100%);
+    color: $color-white;
+    padding: 20px 0;
+    border-bottom: 4px solid $color-primary;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+    .header-flex {
+        @include flex-center-between;
+        flex-wrap: wrap;
+        gap: 20px;
+
+        @media (max-width: 780px) { // Media Query responsiva (Unidad 1)
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+
+    .logo {
+        h1 {
+            font-family: $font-heading;
+            font-size: 1.9rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 0;
+            span { color: $color-primary-hover; }
+        }
+        p { font-size: 0.8rem; opacity: 0.8; margin-bottom: 0; }
+    }
+
+    .main-nav ul {
+        display: flex;
+        gap: 25px;
+        list-style: none;
+        margin-bottom: 0;
+
+        @media (max-width: 780px) {
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding-left: 0;
+        }
+
+        a {
+            color: $color-white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+            &:hover { color: $color-primary-hover; }
+        }
+    }
+
+    .search-box {
+        display: flex;
+        background: rgba($color-white, 0.15);
+        border-radius: 40px;
+        padding: 5px 12px;
+
+        input {
+            background: transparent;
+            border: none;
+            padding: 8px;
+            color: $color-white;
+            outline: none;
+            &::placeholder { color: #ccc; }
+        }
+        button {
+            background: none;
+            border: none;
+            color: $color-white;
+            cursor: pointer;
+            &:hover { color: $color-primary; }
+        }
+    }
+}

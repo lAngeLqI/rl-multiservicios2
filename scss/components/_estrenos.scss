@@ -1,0 +1,98 @@
+// ==========================================
+// COMPONENTE: PÁGINA DE ESTRENOS
+// ==========================================
+
+// 1. TEMA OSCURO GLOBAL PARA LA PÁGINA
+.estrenos-theme {
+    background-color: #121418; // Fondo oscuro principal (casi negro)
+    color: #e2e8f0;            // Texto general claro
+    
+    // Fuerza a que el body completo tome este color
+    min-height: 100vh;
+}
+
+// Utilidad rápida para tipografía en HTML
+.font-heading {
+    font-family: $font-heading;
+}
+
+// 2. Título y Subtítulo
+.estrenos-header {
+    h2 {
+        letter-spacing: -1px;
+    }
+    
+    .subtitle-border {
+        border-left: 3px solid $color-primary; // Mantiene la línea roja
+        padding-left: 12px;
+        margin-top: 10px;
+    }
+}
+
+// 3. Barra de Filtros
+.filter-bar {
+    background-color: #1a222c; // Un gris azulado oscuro[cite: 5]
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); // Sombra más intensa para fondo oscuro
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    .form-select {
+        cursor: pointer;
+        background-color: #0f1626; // Fondo de los selectores más oscuro
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+
+        &:focus {
+            box-shadow: 0 0 0 0.25rem rgba($color-primary, 0.25); //[cite: 5]
+            border-color: $color-primary; //[cite: 5]
+        }
+    }
+}
+
+// 4. Tarjeta de Estreno (Estilo Oscuro)
+.dark-card {
+    background-color: #151a21 !important; //[cite: 5]
+    border-radius: 16px !important; //[cite: 5]
+    overflow: hidden; //[cite: 5]
+    border: 1px solid rgba(255, 255, 255, 0.05) !important; //[cite: 5]
+    @include transition-smooth; //[cite: 5]
+
+    &:hover {
+        transform: translateY(-8px); //[cite: 5]
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important; //[cite: 5]
+        
+        .card-img {
+            transform: scale(1.05); //[cite: 5]
+        }
+    }
+
+    .card-img {
+        transition: transform 0.5s ease; //[cite: 5]
+        border-bottom: 2px solid rgba(255,255,255,0.05); //[cite: 5]
+    }
+
+    .card-content {
+        padding: 20px 20px 10px 20px; //[cite: 5]
+    }
+
+    // Pie de la tarjeta (Fecha y Bookmark)
+    .card-footer-custom {
+        padding: 0 20px 20px 20px; //[cite: 5]
+        display: flex; //[cite: 5]
+        justify-content: space-between; //[cite: 5]
+        align-items: center; //[cite: 5]
+
+        .bookmark-btn {
+            background: none; //[cite: 5]
+            border: none; //[cite: 5]
+            color: $color-muted; //[cite: 5]
+            font-size: 1.2rem; //[cite: 5]
+            cursor: pointer; //[cite: 5]
+            transition: color 0.2s, transform 0.2s; //[cite: 5]
+
+            &:hover {
+                color: $color-primary; //[cite: 5]
+                transform: scale(1.2); //[cite: 5]
+            }
+        }
+    }
+}

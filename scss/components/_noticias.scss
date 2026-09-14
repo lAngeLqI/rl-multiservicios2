@@ -1,0 +1,195 @@
+// ==========================================
+// COMPONENTE: PÁGINA DE NOTICIAS 
+// ==========================================
+
+$news-bg: #0d0d0f; // Fondo súper oscuro (casi negro)
+$news-surface: #18181b; // Gris carbón para las tarjetas
+$news-primary: #ff3366; // Rojo/Rosado vibrante del diseño
+$news-text: #f4f4f5;
+$news-muted: #a1a1aa;
+
+// TEMA GLOBAL DE LA PÁGINA
+.noticias-theme {
+    background-color: $news-bg;
+    color: $news-text;
+    min-height: 100vh;
+}
+
+// 1. NOTICIA DESTACADA (HERO CARD)
+.news-hero-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; // Manda el texto hacia abajo
+    
+    // El brillo sutil rojo del borde
+    border: 1px solid rgba($news-primary, 0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba($news-primary, 0.1);
+    
+    @include transition-smooth;
+
+    &:hover {
+        transform: translateY(-5px); // Animación requerida [cite: 22]
+        .card-bg { transform: scale(1.05); }
+    }
+
+    .card-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.6s ease;
+    }
+
+    // Degradado oscuro para que el texto sea legible
+    .card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba($news-bg, 1) 0%, rgba($news-bg, 0.7) 40%, transparent 100%);
+    }
+
+    .card-content {
+        position: relative;
+        z-index: 2;
+        padding: 40px;
+        max-width: 700px;
+
+        h2 { font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 800; line-height: 1.2; margin: 15px 0; color: white; }
+        p { color: $news-text; opacity: 0.9; margin-bottom: 25px; line-height: 1.6; }
+    }
+}
+
+// Etiquetas y Botones
+.news-badge {
+    background-color: $news-primary;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.btn-news-primary {
+    background-color: $news-primary;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    
+    &:hover { background-color: lighten($news-primary, 5%); transform: translateY(-2px); box-shadow: 0 5px 15px rgba($news-primary, 0.4); }
+}
+
+// 2. TARJETAS DE NOTICIAS ESTÁNDAR (Grid 2x2)
+.news-standard-card {
+    background-color: $news-surface;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 100%;
+    border: 1px solid rgba(255,255,255,0.05);
+    @include transition-smooth;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        .img-wrapper img { transform: scale(1.05); }
+    }
+
+    .img-wrapper {
+        overflow: hidden;
+        aspect-ratio: 16/9;
+        img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    }
+
+    .content {
+        padding: 20px;
+        
+        .category {
+            color: $news-primary;
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        h3 { font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 700; color: white; line-height: 1.4; margin-bottom: 10px; }
+        p { color: $news-muted; font-size: 0.85rem; line-height: 1.5; margin: 0; }
+    }
+}
+
+// 3. WIDGETS DEL SIDEBAR
+.news-sidebar-widget {
+    background-color: $news-surface;
+    border-radius: 12px;
+    padding: 25px;
+    border: 1px solid rgba(255,255,255,0.05);
+
+    .widget-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 25px;
+    }
+}
+
+// Lista "Lo más leído"
+.most-read-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+        align-items: flex-start;
+
+        &:last-child { margin-bottom: 0; }
+
+        // El número grande y sutil
+        .number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1;
+            color: rgba($news-primary, 0.2); // Faded Red de la imagen
+        }
+
+        .info {
+            h4 {
+                font-size: 0.95rem;
+                font-weight: 700;
+                line-height: 1.4;
+                margin-bottom: 5px;
+                a { color: white; text-decoration: none; transition: color 0.2s; &:hover { color: $news-primary; } }
+            }
+            .time { font-size: 0.75rem; color: $news-muted; }
+        }
+    }
+}
+
+// Widget Boletín Informativo (Newsletter)
+.newsletter-box {
+    .newsletter-icon { font-size: 2.5rem; color: $news-primary; }
+    
+    .newsletter-input {
+        background-color: #27272a; // Gris más claro para el input
+        border: 1px solid transparent;
+        color: white;
+        padding: 12px 15px;
+        font-size: 0.9rem;
+        
+        &::placeholder { color: #71717a; }
+        &:focus { background-color: #27272a; color: white; border-color: $news-primary; box-shadow: none; }
+    }
+}
